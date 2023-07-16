@@ -6,12 +6,21 @@
 {% endblock %}
 
 {% block content %}
-{#    <a href="{% url 'new-todo' %}"></a>#}
-    <ul>
-        {% for todo in todos %}
-            <li>{{ todo.title }}<span style="margin-left: 10px"> تاریخ  و زمان ثبت شده {{ todo.created_date | to_jalali }} </span></li>
-        {% empty %}
-            <li>هیچ فعالیتی یافت نشد!</li>
-        {% endfor %}
-    </ul>
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+            <h4><a href="/admin">پنل ادمین</a></h4>
+        {% endif %}
+        <h4><a href="{% url 'logout' %}">خروج</a></h4>
+        <ul>
+            {% for todo in todos %}
+                <li>{{ todo.title }}<span style="margin-left: 10px"> تاریخ  و زمان ثبت شده {{ todo.created_date | to_jalali }} </span></li>
+            {% empty %}
+                <li>هیچ فعالیتی یافت نشد!</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h4><a href="{% url 'register-user-page' %}">ثبت نام</a></h4>
+        <h4><a href="{% url 'login-user-page' %}">ورود</a></h4>
+        <h3>لطفا ثبت نام کنید یا در صورت وجود حساب کاربری وارد شوید</h3>
+    {% endif %}
 {% endblock %}
