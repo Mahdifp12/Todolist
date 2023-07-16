@@ -10,6 +10,7 @@
         {% if request.user.is_superuser %}
             <h4><a href="/admin">پنل ادمین</a></h4>
         {% endif %}
+        <h4><a href="{% url 'user-panel-page' %}">پنل کاربری</a></h4>
         <h4><a href="{% url 'logout' %}">خروج</a></h4>
         <ul>
             {% for todo in todos %}
