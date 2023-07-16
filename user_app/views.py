@@ -169,6 +169,7 @@ class ResetPasswordView(View):
         }
         return render(request, 'user_app/reset_password.html', context)
 
+
 class LogoutView(View):
     def get(self, request: HttpRequest):
         logout(request)
