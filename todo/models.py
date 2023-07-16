@@ -8,3 +8,10 @@ class ItemTodo(models.Model):
     description = models.TextField(verbose_name="متن توصیف")
     completed = models.BooleanField(default=False, verbose_name="تکمیل شده")
     created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "آیتم تودو"
+        verbose_name_plural = "آیتم های تودو"
+
+    def __str__(self):
+        return self.title

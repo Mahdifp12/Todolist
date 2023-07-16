@@ -1,0 +1,14 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+    ثبت نام
+{% endblock %}
+
+{% block content %}
+    <h3>ثبت نام حساب کاربری</h3>
+    <form method="post" action={% url 'register-user-page' %}>
+        {% csrf_token %}
+        {{ register_form.as_p }}
+        <button type="submit">ثبت نام</button>
+    </form>
+{% endblock %}
