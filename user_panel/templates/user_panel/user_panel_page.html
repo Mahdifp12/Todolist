@@ -1,0 +1,19 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+پنل کاربری
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <h3>این پنل کاربری است</h3>
+        <ul>
+            <li>
+                <a href="{% url 'edit-info-page' %}">ویرایش اطلاعات کاربری</a>
+            </li>
+            <li>
+                <a href="{% url 'change-password_page' %}">تغییر کلمه عبور</a>
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}

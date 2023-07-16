@@ -1,0 +1,20 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+ویزایش اطلاعات
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        {% if current_user.avatar %}
+            <a class="thumbnail">
+                <img src="{{ current_user.avatar.url }}" alt="{{ current_user.email }}">
+            </a>
+        {% endif %}
+        <form enctype="multipart/form-data" action="{% url 'edit-info-page' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">ثبت</button>
+        </form>
+    {% endif %}
+{% endblock %}
