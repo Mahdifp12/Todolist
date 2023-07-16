@@ -1,0 +1,16 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+    ورود
+{% endblock %}
+
+{% block content %}
+    <h2>ورود به حساب کاربری</h2>
+    <h4><a href="{% url 'register-user-page' %}">کلیک کنید</a>ثبت نام نکرده اید ؟! </h4>
+    <form method="post" action={% url 'login-user-page' %}>
+        {% csrf_token %}
+        {{ login_form.as_p }}
+{#         <p><a href="{% url 'forgot-password-page' %}">بازیابی کلمه عبور</a></p>#}
+        <button type="submit">ورود</button>
+    </form>
+{% endblock %}
