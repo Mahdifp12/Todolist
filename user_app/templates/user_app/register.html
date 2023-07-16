@@ -6,6 +6,7 @@
 
 {% block content %}
     <h3>ثبت نام حساب کاربری</h3>
+    <h4><a href="{% url 'login-user-page' %}">کلیک کنید</a>قبلا ثبت نام کرده اید ؟! </h4>
     <form method="post" action={% url 'register-user-page' %}>
         {% csrf_token %}
         {{ register_form.as_p }}
