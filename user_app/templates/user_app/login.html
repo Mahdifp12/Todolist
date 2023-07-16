@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <h2>ورود به حساب کاربری</h2>
+    <h3>ورود به حساب کاربری</h3>
     <h4><a href="{% url 'register-user-page' %}">کلیک کنید</a>ثبت نام نکرده اید ؟! </h4>
     <form method="post" action={% url 'login-user-page' %}>
         {% csrf_token %}
