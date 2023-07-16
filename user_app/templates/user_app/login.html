@@ -10,7 +10,7 @@
     <form method="post" action={% url 'login-user-page' %}>
         {% csrf_token %}
         {{ login_form.as_p }}
-{#         <p><a href="{% url 'forgot-password-page' %}">بازیابی کلمه عبور</a></p>#}
+         <p><a href="{% url 'forgot-password-page' %}">بازیابی کلمه عبور</a></p>
         <button type="submit">ورود</button>
     </form>
 {% endblock %}
