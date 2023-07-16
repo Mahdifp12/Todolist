@@ -1,4 +1,5 @@
 {% extends 'shared/layout.html' %}
+{% load jalali_tags %}
 
 {% block title %}
     لیست ToDo
@@ -8,7 +9,7 @@
 {#    <a href="{% url 'new-todo' %}"></a>#}
     <ul>
         {% for todo in todos %}
-            <li>{{ todo.title }}</li>
+            <li>{{ todo.title }} تاریخ  و زمان ثبت شده {{ todo.created_date | to_jalali }}</li>
         {% empty %}
             <li>هیچ فعالیتی یافت نشد!</li>
         {% endfor %}
