@@ -1,0 +1,15 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+    لیست ToDo
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for todo in todos %}
+            <li>{{ todo.title }}</li>
+        {% empty %}
+            <li>هیچ فعالیتی یافت نشد!</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
