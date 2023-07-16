@@ -9,7 +9,7 @@
 {#    <a href="{% url 'new-todo' %}"></a>#}
     <ul>
         {% for todo in todos %}
-            <li>{{ todo.title }} تاریخ  و زمان ثبت شده {{ todo.created_date | to_jalali }}</li>
+            <li>{{ todo.title }}<span style="margin-left: 10px"> تاریخ  و زمان ثبت شده {{ todo.created_date | to_jalali }} </span></li>
         {% empty %}
             <li>هیچ فعالیتی یافت نشد!</li>
         {% endfor %}
