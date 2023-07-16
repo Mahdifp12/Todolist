@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # internal apps
     'todo',
     'user_app',
+    'user_panel',
     # external apps
     'jalali_date',
 ]
