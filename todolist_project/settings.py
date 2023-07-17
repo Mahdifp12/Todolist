@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'user_panel',
     # external apps
     'jalali_date',
+    'autoslug'
 ]
 
 MIDDLEWARE = [
