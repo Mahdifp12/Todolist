@@ -10,11 +10,16 @@
         {% if request.user.is_superuser %}
             <h4><a href="/admin">پنل ادمین</a></h4>
         {% endif %}
+        <h4><a href="{% url 'add-todo-page' %}">اضافه کردن تو دو</a></h4>
         <h4><a href="{% url 'user-panel-page' %}">پنل کاربری</a></h4>
         <h4><a href="{% url 'logout' %}">خروج</a></h4>
         <ul>
             {% for todo in todos %}
-                <li>{{ todo.title }}<span style="margin-left: 10px"> تاریخ  و زمان ثبت شده {{ todo.created_date | to_jalali }} </span></li>
+                <li>{{ todo.title }}
+                    <span></span></li>
+                <p> تاریخ  و زمان ثبت شده‌:  {{ todo.created_date | to_jalali }}</p>
+                <p>{% if todo.completed %}  (انجام شده است)  {% endif %}</p>
+                <hr>
             {% empty %}
                 <li>هیچ فعالیتی یافت نشد!</li>
             {% endfor %}
