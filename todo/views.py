@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views import View
 from .models import ItemTodo
 from .forms import AddTodoForm
@@ -18,6 +18,12 @@ class TodoListView(ListView):
         query = super(TodoListView, self).get_queryset()
         query = query.filter(user__id__iexact=self.request.user.id)
         return query
+
+
+class TodoDetailView(DetailView):
+    model = ItemTodo
+    template_name = "todo/todo_detail_page.html"
+    context_object_name = 'todo'
 
 
 class AddTodo(View):
