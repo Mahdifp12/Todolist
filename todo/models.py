@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from slugify import slugify
+from autoslug import AutoSlugField
 
 from user_app.models import User
 
@@ -13,8 +14,8 @@ class ItemTodo(models.Model):
     completed = models.BooleanField(default=False, verbose_name="تکمیل شده")
     created_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name="کاربر")
-    slug = models.SlugField(db_index=True, max_length=200, unique=True, null=True, blank=True,
-                            verbose_name="عنوان در url")
+    slug = AutoSlugField(db_index=True, max_length=200, unique=True, null=True, blank=True,
+                         verbose_name="عنوان در url")
 
     class Meta:
         verbose_name = "آیتم تودو"
