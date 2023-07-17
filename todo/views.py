@@ -1,8 +1,9 @@
-from django.http import HttpRequest
+from django.http import HttpRequest, Http404
 from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.views.generic import ListView, DetailView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, DeleteView
 from django.views import View
+from django.contrib import messages
 from .models import ItemTodo
 from .forms import AddTodoForm
 
@@ -24,6 +25,12 @@ class TodoDetailView(DetailView):
     model = ItemTodo
     template_name = "todo/todo_detail_page.html"
     context_object_name = 'todo'
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset=queryset)
+        if obj.user != self.request.user:
+            raise Http404("شما مجاز به دیدن این صفحه نیستید.")
+        return obj
 
 
 class AddTodo(View):
@@ -49,3 +56,17 @@ class AddTodo(View):
             new_todo.save()
 
             return redirect(reverse("todo-list"))
+
+
+class TodoCompleted(DeleteView):
+    model = ItemTodo
+    template_name = "todo/todo_completed_page.html"
+    context_object_name = 'todo'
+    success_url = reverse_lazy('todo-list')
+
+    def form_valid(self, form):
+        todo = self.get_object()
+        todo.completed = True
+        todo.save()
+        messages.success(self.request, "تو دو شما با موفقیت به پایان رسید ...")
+        return super(TodoCompleted, self).form_valid(form)
