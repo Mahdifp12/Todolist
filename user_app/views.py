@@ -28,7 +28,7 @@ class RegisterView(View):
             user_password = register_form.cleaned_data.get("password")
             user: bool = User.objects.filter(email__iexact=user_email).exists()
             if user:
-                register_form.add_error('email', 'ایمیل وارد شده تکراری میباشد')
+                register_form.add_error('email', 'ایمیل وارد شده تکراری میباشد...لطفا وارد شوید')
 
             else:
                 new_user = User(
