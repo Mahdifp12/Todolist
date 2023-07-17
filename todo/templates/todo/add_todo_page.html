@@ -1,0 +1,13 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+اضافه کردن تو دو
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'add-todo-page' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">ثبت</button>
+    </form>
+{% endblock %}
