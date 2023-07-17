@@ -18,7 +18,14 @@
                 <li><a href="{% url 'todo-detail-page' slug=todo.slug %}">{{ todo.title }}</a>
                     <span></span></li>
                 <p> تاریخ  و زمان ثبت شده‌:  {{ todo.created_date | to_jalali }}</p>
-                <p>{% if todo.completed %}  (انجام شده است)  {% endif %}</p>
+
+                <p>
+                    {% if todo.completed %}
+                    (انجام شده است)
+                    {% else %}
+                        <a href="{% url 'todo-completed-page' slug=todo.slug %}">حذف و تکمیل</a>
+                    {% endif %}
+                </p>
                 <hr>
             {% empty %}
                 <li>هیچ فعالیتی یافت نشد!</li>
