@@ -116,9 +116,9 @@ USE_TZ = True
 
 AUTH_USER_MODEL = "user_app.User"
 
-EMAIL_HOST_USER = "Your SMTP email is placed here"
+EMAIL_HOST_USER = "Your SMTP email is placed here"  # به دلایل امنیتی ایمیل مورد نظر را پاک کرده ام
 
-EMAIL_HOST_PASSWORD = "Your Password is placed here"
+EMAIL_HOST_PASSWORD = "Your Password is placed here"  # به دلایل امنیتی رمز ایمیل مورد نظر را پاک کرده ام
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
