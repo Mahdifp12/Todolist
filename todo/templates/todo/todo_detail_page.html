@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block content %}
-
+    {% if request.user.is_authenticated %}
     <h2>{{ todo.title }}</h2>
     <span class="badge {% if todo.completed %} badge-completed{% else %}badge-pending{% endif %}"></span>
     <p>{{ todo.description }}</p>
+    {% endif %}
 {% endblock %}
