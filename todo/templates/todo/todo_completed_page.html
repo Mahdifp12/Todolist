@@ -1,0 +1,15 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+    تمام کردن تو دو
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'todo-completed-page' slug=todo.slug %}" method="post">
+        {% csrf_token %}
+        <h3>حذف و تمام کردن تو دو</h3>
+        <p>آیا میخواهی حذف و تکمیل کنی تودو ی "?{{ todo }}"</p>
+        <input type="submit" value="حذف و تکمیل">
+        <a href="{% url 'todo-list' %}">لغو</a>
+    </form>
+{% endblock %}
