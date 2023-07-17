@@ -15,7 +15,7 @@
         <h4><a href="{% url 'logout' %}">خروج</a></h4>
         <ul>
             {% for todo in todos %}
-                <li>{{ todo.title }}
+                <li><a href="{% url 'todo-detail-page' slug=todo.slug %}">{{ todo.title }}</a>
                     <span></span></li>
                 <p> تاریخ  و زمان ثبت شده‌:  {{ todo.created_date | to_jalali }}</p>
                 <p>{% if todo.completed %}  (انجام شده است)  {% endif %}</p>
